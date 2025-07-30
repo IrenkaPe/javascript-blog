@@ -31,8 +31,10 @@ const articleSelector = clickedElement.getAttribute('href');
 
   /* find the correct article using the selector (value of 'href' attribute) */
 
- const targetArticle = document.querySelector('href')
+const targetArticle = document.querySelector(articleSelector);
   /* add class 'active' to the correct article */
+
+targetArticle.classList.add('active');
 }
 
 const links = document.querySelectorAll('.titles a');
