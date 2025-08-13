@@ -38,8 +38,8 @@ targetArticle.classList.add('active');
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
-  optArticleTagsSelector = ".post-tags .list"
-  
+  optArticleTagsSelector = '.post-tags .list',
+  optArticleAuthorSelector = '.post-author'
 
 function generateTitleLinks(customSelector =''){
   /* remove contents of titleList */
@@ -159,4 +159,31 @@ console.log ('znaleziono link do tagów: ', tagLinks);
     }
 }
 addClickListenersToTags();
+
+function generateAuthors(){
+/* find all articles */
+    const articles = document.querySelectorAll(optArticleSelector);
+    console.log ('1.znalesione artykuły: ', articles);
+
+    /* START LOOP: for every article: */
+    for (let article of articles){
+        console.log ('.aktualny artykuł:', article);
+      /* find tags wrapper */
+        const authorWrapper = article.querySelector(optArticleAuthorSelector);
+        console.log ('. znaleziony wraper autora: ', authorWrapper);
+      /* make html variable with empty string */
+        let html = '';
+      /* get names from data-author attribute */
+        const articleAuthor = article.getAttribute('data-author');
+        console.log ('4 pobrane nazwiska z atrybutu:',articleAuthor)
+        const linkHTML = '<p><a href= #author-' + articleAuthor + '"> ' + articleAuthor + '</a></p>';
+        /* add generated code to html variable */
+        html= html + linkHTML;
+      /* insert HTML of all the links into the author wrapper */
+        authorWrapper.innerHTML = html;
+    /* END LOOP: for every article: */
+        }
+    }
+
+generateAuthors();
 
