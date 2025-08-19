@@ -119,8 +119,56 @@ body {
     margin: 0 10px 0 0;
   }
 }
-li {
-  border: 1px solid red;
-  display: block;
+.tags { 
+  li {
+  display:inline - block;
+  margin: 5px;
+  .tagX {
+    text-decoration: none;
+  }
+  }
 }
+ 
 
+.tag-size-1 {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgb(111, 111, 188);
+  
+  &:hover {
+    color: rgb(24, 24, 174);
+  }
+}
+.tag-size-2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: rgb(164, 111, 188);
+  
+  &:hover {
+    color: rgb(139, 24, 174);
+  }
+}
+.tag-size-3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgb(111, 188, 140);
+  &:hover {
+    color: rgb(24, 174, 46);
+  }
+}
+.tag-size-4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(188, 111, 165);
+  &:hover {
+    color: rgb(174, 24, 109);
+  }
+}
+.tag-size-5 {
+  font-size: 30px;
+  font-weight: 700;
+  color: rgb(201, 75, 7);
+  &:hover {
+    color: rgb(174, 24, 109);
+  }
+}
