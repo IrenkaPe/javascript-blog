@@ -40,7 +40,8 @@ const optArticleSelector = '.post',
   optArticleAuthorSelector = '.post-author',
   optTagsListSelector = '.tags.list',
   optCloudClassCount = '5',
-  optCloudClassPrefix = 'tag-size-';
+  optCloudClassPrefix = 'tag-size-',
+  optAuthorListSelector = '.list.authors';
 
 function generateTitleLinks(customSelector = '') {
   /* remove contents of titleList */
@@ -332,3 +333,47 @@ function generateTags() {
   /*[NEW] add HTML from allTagsHTML to tagList */
   tagList.innerHTML = allTagsHTML;
 }
+
+
+function generateAuthors() {
+  /* [NEW] create a new variable all with an empty object */
+  let allAuthors = {};
+  /* find all articles */
+  const articles = document.querySelectorAll(optArticleSelector);
+  console.log('1.znalesione artykuły: ', articles);
+
+  /* START LOOP: for every article: */
+  for (let article of articles) {
+    console.log('2.aktualny artykuł:', article);
+    /* find author wrapper */
+    const authorWrapper = article.querySelector(optArticleAuthorSelector);
+    console.log('3. znaleziony wraper autora: ', authorWrapper);
+    /* make html variable with empty string */
+    let html = '';
+    /* get names from data-author attribute */
+    const author = article.getAttribute('data-author');
+    console.log('4 pobrane nazwiska z atrybutu:', author);
+    const linkHTML = '<p><a href="#author-' + author + '"> ' + author + '</a></p>';
+    /* add generated code to html variable */
+    html = html + linkHTML;
+
+    if (!allAuthors[author]) {
+      allAuthors[author] = 1;
+    } else {
+      allAuthors[author]++;
+    }
+    console.log('Authors: ', allAuthors);
+    /* insert HTML of all the links into the author wrapper */
+    authorWrapper.innerHTML = html;
+    /* END LOOP: for every article: */
+  }
+  const authorList = document.querySelector(optAuthorListSelector);
+  let allAuthorsHTML = '';
+  for (let author in allAuthors) {
+    const count = allAuthors[author];
+    const authorLinkHTML = '<li><a href= "#author-' + author + '">' + author + '(' + count + ') </a></li>';
+    allAuthorsHTML += authorLinkHTML;
+  }
+  authorList.innerHTML = allAuthorsHTML;
+}
+generateAuthors();
