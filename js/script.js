@@ -17,7 +17,6 @@ const select = {
   article: {
     tags: '.post-tags .list',
     author: '.post-author',
-    titles:'.post-title',
     titles: '.post-title',
   },
   listOf: {
